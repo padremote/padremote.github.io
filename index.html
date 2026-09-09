@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1018" />
+  <title>PadRemote · Your phone is the trackpad</title>
+  <meta name="description" content="PadRemote turns your phone's touchscreen into a wireless trackpad for your Mac. The computer runs a small menu-bar app; the phone just opens a web page." />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+
+  <meta property="og:title" content="PadRemote — your phone is the trackpad" />
+  <meta property="og:description" content="A wireless trackpad for your Mac, running on the phone already in your pocket. Nothing to install on the phone." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://padremote.github.io/" />
+  <meta property="og:image" content="https://padremote.github.io/assets/img/pad.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-raised focus:px-4 focus:py-2">Skip to content</a>
+
+<!-- Header. Four links and a logo: the page is one scroll, so the nav is a way
+     back to the top of a section rather than a site map. -->
+<header class="sticky top-0 z-40 border-b border-line/60 bg-bg/85 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-6xl items-center gap-6 px-6 py-4" aria-label="Main">
+    <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
+      <img src="assets/icon.svg" alt="" width="32" height="32" class="h-8 w-8 rounded-lg" />
+      PadRemote
+    </a>
+    <div class="ml-auto flex items-center gap-1 text-sm text-muted sm:gap-2">
+      <a href="#features" class="hidden rounded-lg px-3 py-2 transition hover:text-fg sm:inline-block">Features</a>
+      <a href="#gestures" class="hidden rounded-lg px-3 py-2 transition hover:text-fg sm:inline-block">Gestures</a>
+      <a href="#install" class="rounded-lg px-3 py-2 transition hover:text-fg">Install</a>
+      <a href="#faq" class="rounded-lg px-3 py-2 transition hover:text-fg">FAQ</a>
+      <a href="https://github.com/padremote/padremote" class="rounded-lg px-3 py-2 font-medium text-accent transition hover:text-fg">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section id="top" class="mx-auto w-full max-w-6xl px-6 pb-20 pt-16 sm:pt-24">
+    <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      <div class="min-w-0">
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3 py-1 text-xs text-muted">
+          <span class="h-2 w-2 rounded-full bg-good"></span>
+          macOS · open source · nothing to install on the phone
+        </p>
+        <h1 class="text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+          Your phone is<br class="hidden sm:block" /> the trackpad.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+          PadRemote turns a phone or tablet's touchscreen into a wireless trackpad for
+          your Mac. The computer runs a small menu-bar app. The phone just opens a web
+          page — no app store, no account, and nothing leaves your Wi-Fi.
+        </p>
+
+        <!-- The install command, because that is the whole install. -->
+        <div class="mt-8 max-w-xl">
+          <div class="flex items-start gap-3 rounded-xl border border-line bg-panel px-4 py-3.5">
+            <code id="install-cmd" class="min-w-0 flex-1 whitespace-pre-wrap break-words font-mono text-sm leading-relaxed text-fg">git clone https://github.com/padremote/padremote
+cd padremote &amp;&amp; ./install.sh</code>
+            <button type="button" data-copy="install-cmd"
+                    class="shrink-0 rounded-lg border border-line bg-raised px-3 py-1.5 text-xs font-medium text-muted transition hover:text-fg">
+              Copy
+            </button>
+          </div>
+          <p class="mt-3 text-sm text-muted">
+            Builds the app, installs it to <code class="font-mono text-fg">~/Applications</code>, and launches it.
+            Needs <a class="text-accent hover:text-fg" href="https://www.rust-lang.org/tools/install">Rust</a>
+            and <a class="text-accent hover:text-fg" href="https://nodejs.org">Node</a>.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#install" class="inline-flex min-h-11 items-center rounded-xl bg-accent px-5 py-3 font-medium text-bg transition hover:brightness-110">
+            How to install
+          </a>
+          <a href="https://github.com/padremote/padremote/blob/main/docs/README.md"
+             class="inline-flex min-h-11 items-center rounded-xl border border-line px-5 py-3 font-medium text-muted transition hover:border-accent hover:text-fg">
+            Read the docs
+          </a>
+        </div>
+      </div>
+
+      <!-- The pad itself, on a phone. Everything else on the page explains this
+           picture. -->
+      <div class="relative mx-auto w-full max-w-[300px] lg:max-w-[320px]">
+        <div class="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-accent/10 blur-3xl"></div>
+        <img src="assets/img/pad.png" width="840" height="1760" alt="PadRemote on a phone: the whole screen is the trackpad, with the computer's name and a green connected dot along the top, and Gestures, Full screen and Settings buttons along the bottom."
+             class="w-full rounded-[2rem] border border-line shadow-2xl shadow-black/60" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Three steps -->
+  <section class="border-y border-line/60 bg-panel/40">
+    <div class="mx-auto w-full max-w-6xl px-6 py-16">
+      <ol class="grid gap-10 sm:grid-cols-3">
+        <li>
+          <p class="font-mono text-sm text-accent">01</p>
+          <h2 class="mt-2 text-lg font-semibold">Install the Mac app</h2>
+          <p class="mt-2 text-muted">One command. It lives in the menu bar — no window, no Dock icon.</p>
+        </li>
+        <li>
+          <p class="font-mono text-sm text-accent">02</p>
+          <h2 class="mt-2 text-lg font-semibold">Grant Accessibility</h2>
+          <p class="mt-2 text-muted">macOS asks once. An app that moves your cursor needs it, and macOS owns that decision.</p>
+        </li>
+        <li>
+          <p class="font-mono text-sm text-accent">03</p>
+          <h2 class="mt-2 text-lg font-semibold">Point a camera at the QR</h2>
+          <p class="mt-2 text-muted">Tap the link that appears. The whole phone screen becomes the trackpad.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="mx-auto w-full max-w-6xl px-6 py-24 sm:py-28">
+    <h2 class="max-w-2xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+      It behaves like the trackpad you already use.
+    </h2>
+    <p class="mt-5 max-w-2xl text-lg text-muted">
+      Not because it guesses well — because it reads your Mac's own trackpad settings and
+      copies them, and keeps re-reading them while it runs.
+    </p>
+
+    <div class="mt-20 space-y-24 sm:space-y-32">
+
+      <!-- Mirroring -->
+      <article>
+        <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-widest text-accent">Mirrors your Mac</p>
+            <h3 class="mt-3 text-3xl font-semibold tracking-tight">Your settings, not its defaults</h3>
+          </div>
+          <div>
+          <p class="text-muted">
+            On startup — and every half second after — PadRemote reads your real macOS
+            trackpad settings and matches them. Natural scrolling, tap to click, secondary
+            click, three-finger tap, the swipe gestures: if you changed it in System
+            Settings, PadRemote follows within a second or two. No restart.
+          </p>
+          <p class="mt-4 text-muted">
+            Each setting says where its value came from, so &ldquo;why does it do that?&rdquo; is
+            answered on the page rather than in a config file.
+          </p>
+          <p class="mt-4 text-sm text-muted">
+            Not copied, and it says so: Force Click and rotate (no phone hardware, no way
+            to synthesize them), and tracking speed — Apple's acceleration curve is
+            private, so speed is an approximation you can tune.
+          </p>
+          </div>
+        </div>
+        <figure class="mt-10">
+          <img src="assets/img/basics.png" width="2400" height="1472" loading="lazy"
+               alt="Basic settings: a 'Match my computer' switch reading '6 of 9 matched', and Pointer speed labelled 'Your computer: Tracking speed'."
+               class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+        </figure>
+      </article>
+
+      <!-- Press and hold -->
+      <article class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <figure class="order-last mx-auto w-full max-w-[280px] lg:order-first">
+          <img src="assets/img/drag.png" width="840" height="1360" loading="lazy"
+               alt="A drag in progress on the phone: a green ring and corner brackets around the fingertip, DRAGGING above it, and the screen edges glowing white."
+               class="w-full rounded-[2rem] border border-line shadow-xl shadow-black/40" />
+        </figure>
+        <div>
+          <p class="text-sm font-medium uppercase tracking-widest text-accent">Press and hold</p>
+          <h3 class="mt-3 text-3xl font-semibold tracking-tight">Selecting text without a button</h3>
+          <p class="mt-5 text-muted">
+            A trackpad has a button to hold. A phone has neither a button nor a pressure
+            sensor, so a long press stands in for both. Rest one finger; a ring charges
+            around it, and when it fills the mouse button is held. Slide to select, lift to
+            release.
+          </p>
+          <p class="mt-4 text-muted">
+            The signal is drawn where your hand isn't: brackets close in on the corners of
+            the screen while the press charges, and the whole rim blooms white the moment
+            the drag arms. That reads out of the corner of your eye — which is where you
+            will see it, because your eyes are on the other screen.
+          </p>
+          <p class="mt-4 text-sm text-muted">
+            A click sound on every phone, and a buzz where the browser allows one. The
+            animation is the part that always arrives.
+          </p>
+        </div>
+      </article>
+
+      <!-- Gestures / assignment -->
+      <article>
+        <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-widest text-accent">Gestures</p>
+            <h3 class="mt-3 text-3xl font-semibold tracking-tight">Shown, then named</h3>
+          </div>
+          <div>
+          <p class="text-muted">
+            Every gesture carries a small drawing of the pad with a finger on it for each
+            one the gesture takes, and the selected gesture is demonstrated in the middle
+            of the page. Words are exact and slow; a picture answers &ldquo;which one is
+            that?&rdquo; at a glance.
+          </p>
+          <p class="mt-4 text-muted">
+            Each swipe direction is its own setting — three fingers up and three fingers
+            down are two, not one — and every action a gesture can take is listed rather
+            than hidden in a menu. Four-finger tap is the one gesture your Mac doesn't
+            have, so it arrives unbound and is yours to assign.
+          </p>
+          <p class="mt-4">
+            <a class="text-accent hover:text-fg" href="#gestures">See the full gesture list →</a>
+          </p>
+          </div>
+        </div>
+        <figure class="mt-10">
+          <img src="assets/img/gestures.png" width="2880" height="1800" loading="lazy"
+               alt="The gestures page: a list of gestures on the left, 'Swipe up with three fingers' demonstrated with three animated fingertips in the middle, and the actions it can be assigned on the right."
+               class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+        </figure>
+      </article>
+
+      <!-- Settings on both screens -->
+      <article class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <figure class="order-last mx-auto w-full max-w-[280px] lg:order-first">
+          <img src="assets/img/phone-settings.png" width="840" height="1760" loading="lazy"
+               alt="The phone's quick settings sheet: device name, pointer speed, natural scrolling and click sound, with 'Matching your computer' under the settings the Mac decides."
+               class="w-full rounded-[2rem] border border-line shadow-xl shadow-black/40" />
+        </figure>
+        <div>
+          <p class="text-sm font-medium uppercase tracking-widest text-accent">Settings</p>
+          <h3 class="mt-3 text-3xl font-semibold tracking-tight">On whichever screen is nearer</h3>
+          <p class="mt-5 text-muted">
+            The same settings page opens from the menu bar or from the pad in your hand,
+            live on both at once, saving as you change something.
+          </p>
+          <p class="mt-4 text-muted">
+            The phone's own sheet is an <em>override</em>, not a copy: each control shows
+            your computer's value and says &ldquo;matching your computer&rdquo; underneath.
+            Change one and it becomes yours — on that device only — until you hand it back.
+            A tablet and a phone can each keep their own feel.
+          </p>
+          <p class="mt-4 text-sm text-muted">
+            Underneath it is still a JSON file, hot-reloaded, if you would rather edit that.
+          </p>
+        </div>
+      </article>
+
+      <!-- Pairing -->
+      <article class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p class="text-sm font-medium uppercase tracking-widest text-accent">Pairing</p>
+          <h3 class="mt-3 text-3xl font-semibold tracking-tight">The QR is a key, not just an address</h3>
+          <p class="mt-5 text-muted">
+            The code carries a 128-bit secret, and every connection — the trackpad, the
+            settings page, the diagnostics view — answers an HMAC-SHA256 challenge before
+            the desktop reads a single touch. Another device on your Wi-Fi cannot drive
+            your cursor just by finding the port.
+          </p>
+          <p class="mt-4 text-muted">
+            A connection from a web page is refused during that handshake, which matters
+            more than it sounds: a WebSocket is not subject to the same-origin policy, so
+            without the check any tab open in any browser on your machine could have moved
+            your cursor.
+          </p>
+          <p class="mt-4 text-muted">
+            Each phone then swaps the code for a key of its own and forgets the code — so
+            <strong class="font-medium text-fg">Forget</strong> beside one device revokes
+            that phone alone, and it stays revoked after a restart.
+          </p>
+        </div>
+        <figure class="mx-auto w-full max-w-md">
+          <img src="assets/img/connect.png" width="1320" height="1250" loading="lazy"
+               alt="The connect page on the Mac: a QR code under the heading 'Connect a device', with 'Scan it with the phone's camera. Both devices on the same Wi-Fi.'"
+               class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+          <figcaption class="mt-3 text-center text-xs text-muted">The QR here is a placeholder — a real one is a key to that computer.</figcaption>
+        </figure>
+      </article>
+
+      <!-- Multiple devices -->
+      <article>
+        <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-widest text-accent">More than one device</p>
+            <h3 class="mt-3 text-3xl font-semibold tracking-tight">A phone and a tablet, taking turns</h3>
+          </div>
+          <div>
+          <p class="text-muted">
+            Scan the same code with a second device and both stay connected. They share the
+            one cursor and take turns: it goes to whoever touches next, as soon as the other
+            one stops. Nothing to press, nothing to close.
+          </p>
+          <p class="mt-4 text-muted">
+            The device that is waiting says so, and names the one that has it. Every device
+            that has ever paired is listed — including the one that is switched off, which
+            is usually the one you want to forget.
+          </p>
+          </div>
+        </div>
+        <figure class="mt-10">
+          <img src="assets/img/devices.png" width="2400" height="1384" loading="lazy"
+               alt="The settings home page listing three paired devices — one moving the cursor now, one connected, one offline — each with a Forget button."
+               class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+        </figure>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Smaller claims that still deserve saying -->
+  <section class="border-y border-line/60 bg-panel/40">
+    <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-3">
+      <div>
+        <h3 class="font-semibold">One process, one port</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          The page your phone loads is compiled into the app and served on the same port the
+          phone then opens its socket on. There is no second server to start and nothing to
+          leave running in a terminal.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold">Reconnects by itself</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          A dropped connection retries on a 1&nbsp;s → 10&nbsp;s backoff, and losing it always
+          releases a held button, so a walk out of Wi-Fi range never leaves the mouse down.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold">One session per device</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Open the pad in a second tab and the first stands down and says where its trackpad
+          went, rather than the two racing each other for the cursor.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold">Change your mind mid-gesture</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Start moving with one finger, lay a second down, and it becomes a scroll —
+          re-measured from where your fingers are now, exactly as on the trackpad.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold">The phone decides nothing</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          It reports raw touch points as 14-byte records, one batch per animation frame. All
+          interpretation happens on the desktop, so behaviour is tuned without redeploying
+          anything.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold">Nothing phones home</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          No account, no telemetry, no cloud. Traffic goes from your phone to your computer
+          over your own network, and a check in CI guards it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gesture reference -->
+  <section id="gestures" class="mx-auto w-full max-w-6xl px-6 py-24 sm:py-28">
+    <h2 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Every gesture</h2>
+    <p class="mt-5 max-w-2xl text-lg text-muted">
+      This is what you get before changing anything, because each one starts out following
+      the trackpad setting it is copied from.
+    </p>
+
+    <div class="mt-10 overflow-x-auto rounded-2xl border border-line">
+      <table class="w-full min-w-[42rem] border-collapse text-left text-sm">
+        <thead class="bg-panel text-xs uppercase tracking-widest text-muted">
+          <tr>
+            <th scope="col" class="px-5 py-4 font-medium">Gesture</th>
+            <th scope="col" class="px-5 py-4 font-medium">Does</th>
+            <th scope="col" class="px-5 py-4 font-medium">Follows your setting for</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-line/70">
+          <tr><th scope="row" class="px-5 py-4 font-medium">One finger, move</th><td class="px-5 py-4">Move the cursor</td><td class="px-5 py-4 text-muted">Tracking speed, approximated</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Tap</th><td class="px-5 py-4">Left click</td><td class="px-5 py-4 text-muted">Tap to click</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Two-finger tap</th><td class="px-5 py-4">Right click</td><td class="px-5 py-4 text-muted">Secondary click</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Three-finger tap</th><td class="px-5 py-4">Middle click</td><td class="px-5 py-4 text-muted">Three finger tap</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Four-finger tap</th><td class="px-5 py-4">Unbound — yours to assign</td><td class="px-5 py-4 text-muted">Your Mac has no four-finger tap</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Two fingers, move</th><td class="px-5 py-4">Scroll</td><td class="px-5 py-4 text-muted">Scroll direction, inertia, horizontal scroll</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Two fingers sideways</th><td class="px-5 py-4">Back / forward</td><td class="px-5 py-4 text-muted">Swipe between pages</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Three fingers, left / right</th><td class="px-5 py-4">Switch full-screen apps</td><td class="px-5 py-4 text-muted">Swipe between pages</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Three fingers, up / down</th><td class="px-5 py-4">Mission Control</td><td class="px-5 py-4 text-muted">Mission Control</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, left / right</th><td class="px-5 py-4">Switch full-screen apps</td><td class="px-5 py-4 text-muted">Swipe between full-screen apps</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, up / down</th><td class="px-5 py-4">Mission Control / App windows</td><td class="px-5 py-4 text-muted">Mission Control</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, pinch in</th><td class="px-5 py-4">Launchpad</td><td class="px-5 py-4 text-muted">Launchpad</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Five fingers, spread</th><td class="px-5 py-4">Show Desktop</td><td class="px-5 py-4 text-muted">Show Desktop</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium">Press and hold, then move</th><td class="px-5 py-4">Drag / select text</td><td class="px-5 py-4 text-muted">Always available — it replaces hardware you don't have</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-5 max-w-2xl text-sm text-muted">
+      Swipes are produced by sending the Mission Control keyboard shortcuts, since no public
+      API can synthesize a real multi-finger swipe. If you have disabled those shortcuts,
+      PadRemote says so at startup rather than silently doing nothing. Pinch zoom is off by
+      default: on a phone-sized pad it is millimetres away from a two-finger swipe.
+    </p>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="border-t border-line/60 bg-panel/40">
+    <div class="mx-auto w-full max-w-6xl px-6 py-24 sm:py-28">
+      <h2 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Install</h2>
+      <p class="mt-5 max-w-2xl text-lg text-muted">
+        You need a Mac, a phone on the same Wi-Fi, and — because building it yourself is the
+        only option today — Rust and Node. Nothing is installed on the phone.
+      </p>
+
+      <div class="mt-12 grid gap-12 lg:grid-cols-3">
+        <div class="min-w-0">
+          <p class="font-mono text-sm text-accent">01</p>
+          <h3 class="mt-2 text-xl font-semibold">Build and install</h3>
+          <pre class="mt-4 whitespace-pre-wrap break-words rounded-xl border border-line bg-bg p-4 font-mono text-sm text-fg"><code>git clone https://github.com/padremote/padremote
+cd padremote
+./install.sh</code></pre>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            Builds the phone page <em>into</em> the app, installs it to
+            <code class="font-mono text-fg">~/Applications</code> where Spotlight finds it,
+            offers to start it at login, and launches it. It runs in the menu bar with no
+            Dock icon.
+          </p>
+          <dl class="mt-4 space-y-2 text-sm text-muted">
+            <div class="flex gap-3"><dt class="w-40 shrink-0 font-mono text-fg">--no-login</dt><dd>the same, without the login item</dd></div>
+            <div class="flex gap-3"><dt class="w-40 shrink-0 font-mono text-fg">--login</dt><dd>add it without being asked</dd></div>
+            <div class="flex gap-3"><dt class="w-40 shrink-0 font-mono text-fg">--uninstall</dt><dd>remove the app; settings and pairing are kept</dd></div>
+          </dl>
+        </div>
+
+        <div class="min-w-0">
+          <p class="font-mono text-sm text-accent">02</p>
+          <h3 class="mt-2 text-xl font-semibold">Grant Accessibility</h3>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            System Settings → Privacy &amp; Security → Accessibility → enable PadRemote, then
+            launch it again. Without it macOS accepts every injected event and quietly
+            discards it, which looks exactly like a broken app — so PadRemote refuses to
+            start instead.
+          </p>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            The grant is remembered <strong class="font-medium text-fg">per app</strong> (one
+            granted to your terminal does nothing for PadRemote.app) and
+            <strong class="font-medium text-fg">per build</strong>. With no code-signing
+            certificate the bundle is signed ad-hoc, so macOS treats a rebuild as a
+            different app: the box stays ticked and the app is still refused.
+            <code class="font-mono text-fg">install.sh</code> clears the stale grant and
+            prints the one-time recipe that makes grants stick.
+          </p>
+        </div>
+
+        <div class="min-w-0">
+          <p class="font-mono text-sm text-accent">03</p>
+          <h3 class="mt-2 text-xl font-semibold">Pair your phone</h3>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            Menu-bar icon → <strong class="font-medium text-fg">Connect a device…</strong>
+            opens a page with a QR code. Open the Camera app on your phone, point it at the
+            code — don't take a photo — and tap the link.
+          </p>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            The moment the phone connects, the code gives way to <em>Move a finger on the
+            trackpad</em>. Add another device brings it back when a second phone or tablet
+            needs it.
+          </p>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            Don't post the QR anywhere: until that first connection it is the key to your
+            computer.
+          </p>
+        </div>
+      </div>
+
+      <!-- Running from source, for people who would rather not install anything -->
+      <div class="mt-16 rounded-2xl border border-line bg-bg p-6 sm:p-8">
+        <h3 class="text-lg font-semibold">Or run it from source</h3>
+        <p class="mt-2 text-sm text-muted">The page is compiled into the app, so build it first. On first run macOS needs Accessibility for whatever runs the app — in development, your terminal.</p>
+        <pre class="mt-4 whitespace-pre-wrap break-words rounded-xl border border-line bg-panel p-4 font-mono text-sm"><code>cd web &amp;&amp; npm install &amp;&amp; npm run build
+cargo run --manifest-path desktop/Cargo.toml</code></pre>
+        <p class="mt-4 text-sm text-muted">
+          It prints the address to open on your phone. Useful flags:
+          <code class="font-mono text-fg">--dry-run</code> (recognise gestures, inject
+          nothing), <code class="font-mono text-fg">--headless</code>,
+          <code class="font-mono text-fg">--port</code>,
+          <code class="font-mono text-fg">--unpair</code>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest status -->
+  <section class="mx-auto w-full max-w-6xl px-6 py-24 sm:py-28">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Where it is today</h2>
+        <p class="mt-5 text-lg text-muted">
+          Everything on this page works now. These are the things that don't yet, said plainly
+          rather than left for you to discover.
+        </p>
+      </div>
+      <ul class="space-y-6">
+        <li class="rounded-2xl border border-line bg-panel p-5">
+          <h3 class="font-semibold">No signed installer</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">
+            Building it yourself is the only option: a copy built on another Mac would be
+            blocked by Gatekeeper. A notarized <code class="font-mono text-fg">.dmg</code> is
+            planned.
+          </p>
+        </li>
+        <li class="rounded-2xl border border-line bg-panel p-5">
+          <h3 class="font-semibold">No TLS yet</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">
+            The link is plain <code class="font-mono text-fg">ws://</code>, so someone already
+            positioned to read your Wi-Fi can see the touch stream — they cannot open a
+            session of their own. What is defended and what is not is written down in the
+            <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/dev/threat-model.md">threat model</a>.
+          </p>
+        </li>
+        <li class="rounded-2xl border border-line bg-panel p-5">
+          <h3 class="font-semibold">macOS only, in practice</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">
+            The gesture engine is OS-agnostic and the Windows and Linux backends are written
+            and unit-tested — but they have never been run on real hardware. Treat them as
+            unfinished.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-t border-line/60 bg-panel/40">
+    <div class="mx-auto w-full max-w-3xl px-6 py-24 sm:py-28">
+      <h2 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Questions</h2>
+      <p class="mt-5 text-lg text-muted">
+        The ones that come up first, and the ones that come up at the worst moment.
+      </p>
+
+      <div class="mt-12 divide-y divide-line/70 border-y border-line/70">
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Does my phone need an app?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>No. The phone opens a web page that your computer serves. Any modern phone or
+            tablet browser works — iPhone, iPad, Android — and there is nothing to install,
+            update or sign in to on that side.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Can someone else on my Wi-Fi move my cursor?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>No. Finding the port is not enough: every connection answers an HMAC-SHA256
+            challenge over the 128-bit secret carried in the QR before the desktop reads a
+            single touch. Connections from web pages are refused during that handshake.</p>
+            <p>What is not defended yet is confidentiality — the link is plain
+            <code class="font-mono text-fg">ws://</code>, so someone already able to read your
+            Wi-Fi traffic can watch the touch stream go past. They still cannot open a session.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">The cursor doesn't move at all.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>The phone will tell you which of the two it is — read the line under the status
+            dot first, because it names the fix.</p>
+            <p>Almost always it is <strong class="font-medium text-fg">Accessibility
+            permission</strong>: System Settings → Privacy &amp; Security → Accessibility →
+            enable PadRemote. The cursor starts moving the moment you tick the box, with
+            nothing to restart on either end.</p>
+            <p>The other cause is a copy started with <code class="font-mono text-fg">--dry-run</code>,
+            which reads every gesture and moves nothing on purpose.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Why does macOS ask for Accessibility again after an update?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>Because without a code-signing certificate the app is signed ad-hoc, and that
+            identity is the hash of that exact binary. A rebuild is therefore a different app
+            as far as macOS is concerned, and the old grant is dead while the checkbox still
+            looks enabled.</p>
+            <p><code class="font-mono text-fg">install.sh</code> clears the stale grant so
+            macOS asks again, and prints the one-time Keychain recipe that makes grants
+            survive rebuilds.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">The phone says “this site can't be reached”.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>PadRemote serves the page itself, so if the app is not running there is nothing
+            to load. Look for the ●● icon in the menu bar.</p>
+            <p>From the Mac, <code class="font-mono text-fg">curl -I http://localhost:8787/</code>
+            answering <code class="font-mono text-fg">200</code> means the page is being served
+            and the problem is between the phone and the Mac — a different Wi-Fi, or a guest
+            network with client isolation.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">It worked yesterday and now the QR doesn't.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>Your Mac's Wi-Fi address changed, and the old code points at nothing. Open
+            <em>Connect a device…</em> and re-scan whatever code is on screen — the page is
+            drawn from wherever your computer is at that moment, and one left open reloads
+            itself when the address moves.</p>
+            <p>Your phone stays paired across the move, because the pairing code does not
+            change when the address does. To stop it recurring, give the Mac a reserved IP in
+            your router.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Scrolling goes the wrong way.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>PadRemote copies your Mac's <em>Scrolling direction: Natural</em>, so it should
+            already match. If it doesn't, this phone has taken the setting over: open Settings
+            on the pad and look under Natural scrolling.</p>
+            <p>“Matching your computer” means the Mac decides it — change it in System
+            Settings → Trackpad. “Match my computer” means this phone is overriding; tap to
+            hand it back. The override is local to that phone either way.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">The pad says someone else is using this computer.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>Two devices are connected, which is fine — they take turns. To take over, just
+            touch the pad: the cursor comes to you as soon as the other one stops, about a
+            third of a second after it lifts its fingers.</p>
+            <p>If nothing you do ever takes effect, check the name in the message. It may be a
+            forgotten tab open on another device; closing it hands the cursor over for good.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">My iPhone never buzzes when a drag starts.</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>It can't: iOS Safari has no vibration API, and many tablets have no vibration
+            motor at all. That is why a buzz is a bonus and never the signal — the animation
+            and the click sound are what always arrive.</p>
+            <p>On a device that should vibrate but doesn't, open
+            <code class="font-mono text-fg">/haptics.html</code> on it: it says whether the
+            browser refused the call or handed it to the device, which are two very different
+            problems.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Why is zoom steppy?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>No public macOS API can synthesize a real magnify gesture, so zoom is sent as
+            <code class="font-mono text-fg">⌘+</code> / <code class="font-mono text-fg">⌘−</code>.
+            It steps rather than glides, and only works in apps that have a zoom command.</p>
+            <p>Rotate can't be delivered at all: PadRemote could detect the twist; nothing
+            could inject it.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Does it work on Windows or Linux?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p>Not yet, honestly. The gesture engine is pure and OS-agnostic, and the Windows
+            and Linux backends are written, compiled and unit-tested in CI — but they have
+            never been run on real hardware, so nobody has watched a cursor move on either.</p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex cursor-pointer items-start gap-4 text-lg font-medium">
+            <span class="flex-1">Where do my settings live?</span>
+            <span class="mt-1 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+          </summary>
+          <div class="mt-4 space-y-3 text-muted">
+            <p><code class="font-mono text-fg">~/Library/Application Support/PadRemote/config.json</code>,
+            hot-reloaded — edit it by hand and feel the change within about half a second, no
+            restart. The settings page prints the path at the bottom.</p>
+            <p>Setting <code class="font-mono text-fg">"followSystem": false</code> stops
+            PadRemote copying your Mac and pins behaviour to the file.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <p class="mt-10 text-muted">
+        Not here?
+        <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/troubleshooting.md">Troubleshooting</a>
+        covers two dozen more, each with the reason underneath, and
+        <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/issues">an issue</a>
+        is always welcome.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-line/60">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center">
+    <div class="flex items-center gap-3">
+      <img src="assets/icon.svg" alt="" width="32" height="32" class="h-8 w-8 rounded-lg" />
+      <div>
+        <p class="font-semibold">PadRemote</p>
+        <p class="text-sm text-muted">A wireless trackpad for your Mac. MIT licensed.</p>
+      </div>
+    </div>
+    <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted sm:ml-auto" aria-label="Footer">
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote">Source</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/getting-started.md">Getting started</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/gestures.md">Gestures</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/troubleshooting.md">Troubleshooting</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/issues">Issues</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // The only script on the page: copy the install command, and say so, because a
+  // button that does something invisible reads as a button that did nothing.
+  for (const button of document.querySelectorAll("[data-copy]")) {
+    button.addEventListener("click", async () => {
+      const text = document.getElementById(button.dataset.copy).textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        const was = button.textContent;
+        button.textContent = "Copied";
+        setTimeout(() => (button.textContent = was), 1600);
+      } catch {
+        button.textContent = "Press ⌘C";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
