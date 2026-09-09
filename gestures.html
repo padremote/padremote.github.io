@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1018" />
+  <title>Gestures · PadRemote</title>
+  <meta name="description" content="Every PadRemote gesture, what it does, and which of your Mac's trackpad settings it follows." />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+</head>
+<body>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-raised focus:px-4 focus:py-2">Skip to content</a>
+
+<header class="sticky top-0 z-40 border-b border-line/60 bg-bg/85 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-5xl items-center gap-4 px-6 py-4" aria-label="Main">
+    <a href="index.html" class="flex items-center gap-3 font-semibold tracking-tight">
+      <img src="assets/icon.svg" alt="" width="30" height="30" class="h-[30px] w-[30px] rounded-lg" />
+      <span class="hidden sm:inline">PadRemote</span>
+      <span class="sr-only">PadRemote home</span>
+    </a>
+    <div class="ml-auto flex items-center gap-0.5 text-sm text-muted sm:gap-1">
+      <a href="features.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">Features</a>
+      <a href="gestures.html" class="hidden rounded-lg px-3 py-2 text-fg sm:inline-block" aria-current="page">Gestures</a>
+      <a href="install.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">Install</a>
+      <a href="faq.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">FAQ</a>
+      <a href="https://github.com/padremote/padremote" class="rounded-lg px-2.5 py-2 font-medium text-accent transition hover:text-fg sm:px-3">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto w-full max-w-5xl px-6">
+
+  <section class="pb-10 pt-16 sm:pt-20" data-reveal>
+    <h1 class="text-balance text-5xl font-semibold tracking-tight">Every gesture</h1>
+    <p class="mt-4 max-w-lg text-lg text-muted">
+      This is what you get before changing anything: each one starts out following the
+      trackpad setting it copies.
+    </p>
+  </section>
+
+  <div class="overflow-x-auto rounded-2xl border border-line" data-reveal>
+    <table class="w-full min-w-[40rem] border-collapse text-left text-sm">
+      <thead class="bg-panel text-xs uppercase tracking-widest text-muted">
+        <tr>
+          <th scope="col" class="px-5 py-4 font-medium">Gesture</th>
+          <th scope="col" class="px-5 py-4 font-medium">Does</th>
+          <th scope="col" class="px-5 py-4 font-medium">Follows</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-line/70">
+        <tr><th scope="row" class="px-5 py-4 font-medium">One finger, move</th><td class="px-5 py-4">Move the cursor</td><td class="px-5 py-4 text-muted">Tracking speed, approximated</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Tap</th><td class="px-5 py-4">Left click</td><td class="px-5 py-4 text-muted">Tap to click</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Two-finger tap</th><td class="px-5 py-4">Right click</td><td class="px-5 py-4 text-muted">Secondary click</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Three-finger tap</th><td class="px-5 py-4">Middle click</td><td class="px-5 py-4 text-muted">Three finger tap</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Four-finger tap</th><td class="px-5 py-4">Unbound — yours to assign</td><td class="px-5 py-4 text-muted">Your Mac has no four-finger tap</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Two fingers, move</th><td class="px-5 py-4">Scroll</td><td class="px-5 py-4 text-muted">Direction, inertia, horizontal scroll</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Two fingers sideways</th><td class="px-5 py-4">Back / forward</td><td class="px-5 py-4 text-muted">Swipe between pages</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Three fingers, left / right</th><td class="px-5 py-4">Switch full-screen apps</td><td class="px-5 py-4 text-muted">Swipe between pages</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Three fingers, up / down</th><td class="px-5 py-4">Mission Control</td><td class="px-5 py-4 text-muted">Mission Control</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, left / right</th><td class="px-5 py-4">Switch full-screen apps</td><td class="px-5 py-4 text-muted">Swipe between full-screen apps</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, up / down</th><td class="px-5 py-4">Mission Control / App windows</td><td class="px-5 py-4 text-muted">Mission Control</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Four fingers, pinch in</th><td class="px-5 py-4">Launchpad</td><td class="px-5 py-4 text-muted">Launchpad</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Five fingers, spread</th><td class="px-5 py-4">Show Desktop</td><td class="px-5 py-4 text-muted">Show Desktop</td></tr>
+        <tr><th scope="row" class="px-5 py-4 font-medium">Press and hold, then move</th><td class="px-5 py-4">Drag / select text</td><td class="px-5 py-4 text-muted">Always available</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="grid gap-8 py-16 sm:grid-cols-3">
+    <div data-reveal>
+      <h2 class="font-semibold">Reassign any of them</h2>
+      <p class="mt-1 text-sm text-muted">Each swipe direction is its own setting, from a list of whole sentences rather than a menu.</p>
+    </div>
+    <div data-reveal data-reveal-delay="100">
+      <h2 class="font-semibold">Change your mind mid-stroke</h2>
+      <p class="mt-1 text-sm text-muted">Lay a second finger down during a move and it becomes a scroll, exactly as on the trackpad.</p>
+    </div>
+    <div data-reveal data-reveal-delay="200">
+      <h2 class="font-semibold">Zoom steps, rotate can't</h2>
+      <p class="mt-1 text-sm text-muted">No public macOS API can synthesize a magnify or a rotation, so zoom is sent as ⌘+ / ⌘−.</p>
+    </div>
+  </section>
+
+  <nav class="flex flex-wrap gap-4 border-t border-line/60 py-12" aria-label="Next">
+    <a href="features.html" class="inline-flex min-h-11 items-center rounded-xl border border-line px-5 py-3 font-medium text-muted transition hover:border-accent hover:text-fg">← Features</a>
+    <a href="install.html" class="inline-flex min-h-11 items-center rounded-xl bg-accent px-5 py-3 font-medium text-bg transition hover:brightness-110">Install it</a>
+  </nav>
+
+</main>
+
+<footer class="border-t border-line/60">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center">
+    <p>PadRemote — a wireless trackpad for your Mac. MIT licensed.</p>
+    <nav class="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto" aria-label="Footer">
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote">Source</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/gestures.md">Gesture docs</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/issues">Issues</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

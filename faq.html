@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1018" />
+  <title>Questions · PadRemote</title>
+  <meta name="description" content="The questions that come up first, and the ones that come up at the worst moment." />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+</head>
+<body>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-raised focus:px-4 focus:py-2">Skip to content</a>
+
+<header class="sticky top-0 z-40 border-b border-line/60 bg-bg/85 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-5xl items-center gap-4 px-6 py-4" aria-label="Main">
+    <a href="index.html" class="flex items-center gap-3 font-semibold tracking-tight">
+      <img src="assets/icon.svg" alt="" width="30" height="30" class="h-[30px] w-[30px] rounded-lg" />
+      <span class="hidden sm:inline">PadRemote</span>
+      <span class="sr-only">PadRemote home</span>
+    </a>
+    <div class="ml-auto flex items-center gap-0.5 text-sm text-muted sm:gap-1">
+      <a href="features.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">Features</a>
+      <a href="gestures.html" class="hidden rounded-lg px-3 py-2 transition hover:text-fg sm:inline-block">Gestures</a>
+      <a href="install.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">Install</a>
+      <a href="faq.html" class="rounded-lg px-2.5 py-2 text-fg sm:px-3" aria-current="page">FAQ</a>
+      <a href="https://github.com/padremote/padremote" class="rounded-lg px-2.5 py-2 font-medium text-accent transition hover:text-fg sm:px-3">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto w-full max-w-3xl px-6">
+
+  <section class="pb-10 pt-16 sm:pt-20" data-reveal>
+    <h1 class="text-balance text-5xl font-semibold tracking-tight">Questions</h1>
+    <p class="mt-4 text-lg text-muted">The ones that come up first, and the ones that come up at the worst moment.</p>
+  </section>
+
+  <div class="divide-y divide-line/70 border-y border-line/70" data-reveal>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Does my phone need an app?</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">No. It opens a web page your computer serves — any modern phone or tablet browser, nothing to install or sign in to.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Can someone else on my Wi-Fi move my cursor?</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">No — finding the port is not enough; every connection answers an HMAC challenge first. What isn't protected yet is confidentiality: the link is plain <code class="font-mono text-fg">ws://</code>.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">The cursor doesn't move at all.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Almost always Accessibility permission: System Settings → Privacy &amp; Security → Accessibility → enable PadRemote. It starts working the moment you tick the box. The phone says which of the two causes it is.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Why does macOS ask for Accessibility again after a rebuild?</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Ad-hoc signing ties the grant to that exact binary, so a rebuild is a different app to macOS — the box stays ticked and the app is still refused. <code class="font-mono text-fg">install.sh</code> clears it for you.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">The phone says “this site can't be reached”.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">PadRemote serves the page itself, so check it is running in the menu bar. If <code class="font-mono text-fg">curl -I http://localhost:8787/</code> answers 200, the problem is between the phone and the Mac — a different Wi-Fi, or client isolation.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">It worked yesterday and now the QR doesn't.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Your Mac's Wi-Fi address changed. Open <em>Connect a device…</em> and re-scan — your phone stays paired, only the address moved.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Scrolling goes the wrong way.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Open Settings on the pad. “Matching your computer” means your Mac decides it; “match my computer” means this phone is overriding — tap to hand it back.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">The pad says someone else is using this computer.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Two devices are connected and taking turns. Just touch the pad — the cursor comes to you a third of a second after the other one lifts.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">My iPhone never buzzes when a drag starts.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">It can't — iOS Safari has no vibration API. That is why the buzz is a bonus: the animation and the click sound always arrive.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Does it work on Windows or Linux?</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Not yet. Both backends are written and unit-tested in CI, but nobody has watched a cursor move on either.</p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">Where do my settings live?</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted"><code class="font-mono text-fg">~/Library/Application Support/PadRemote/config.json</code>, hot-reloaded — edit it and feel the change within half a second.</p>
+    </details>
+
+  </div>
+
+  <p class="py-10 text-muted" data-reveal>
+    Not here?
+    <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/troubleshooting.md">Troubleshooting</a>
+    covers two dozen more, and
+    <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/issues">an issue</a>
+    is always welcome.
+  </p>
+
+</main>
+
+<footer class="border-t border-line/60">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center">
+    <p>PadRemote — a wireless trackpad for your Mac. MIT licensed.</p>
+    <nav class="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto" aria-label="Footer">
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote">Source</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/troubleshooting.md">Troubleshooting</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/issues">Issues</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

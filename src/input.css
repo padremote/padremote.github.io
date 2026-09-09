@@ -1,17 +1,17 @@
 /**
- * The Tailwind entry for the landing page.
+ * The Tailwind entry for the site.
  *
  * The tokens are the app's own, copied from `docs/dev/design.md` in the
  * padremote repo, so the page and the screenshots on it are the same product
  * rather than a marketing site with a screenshot pasted into it.
  *
- * Rebuild after editing index.html:
- *   npx @tailwindcss/cli@4 -i src/input.css -o assets/tailwind.css --minify
+ * Rebuild after editing any page:
+ *   npm run build
  */
 @import "tailwindcss";
 
-/* v4 scans from the stylesheet's own directory, and the page is a level up. */
-@source "../index.html";
+/* v4 scans from the stylesheet's own directory, and the pages are a level up. */
+@source "../*.html";
 
 @theme {
   --color-bg: #0c1018;
@@ -31,15 +31,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* The header is sticky, so an anchor that lands flush with the top lands
-       underneath it. */
-    scroll-padding-top: 5rem;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    scroll-padding-top: 5rem; /* the header is sticky and would sit on the anchor */
   }
 
   body {
@@ -49,20 +41,112 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Every focusable thing gets the same visible ring; the page is one column of
-     links and disclosures, and tabbing through it should never go dark. */
+  /* One visible ring for everything focusable; the pages are a column of links
+     and disclosures, and tabbing through them should never go dark. */
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
-  /* The FAQ is <details>, so the marker is the browser's. Ours is drawn in the
-     markup instead, and this is the only way to take the default one away. */
   summary::-webkit-details-marker {
     display: none;
   }
   summary {
     list-style: none;
+  }
+}
+
+/*
+ * Motion.
+ *
+ * These are component classes rather than utilities for the same reason the app
+ * has them: a class the JavaScript writes, or a keyframe name, has to survive as
+ * literal text. They are also the only things here a utility cannot express -
+ * keyframes, and a transition that fires on a class the observer adds.
+ */
+@layer components {
+  /* Arriving. Anything that starts hidden must be revealed even if the observer
+     never runs, so `.reveal` is applied by script at load, not written into the
+     markup: no script, no hidden content. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* The hero's phone, breathing. Slow enough to notice only if you look. */
+  .float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  /*
+   * The gesture glyphs, which are the same idea as the drawings inside the app:
+   * a pad with a fingertip on it for each finger the gesture takes, looping, so
+   * a row of them reads like a room with people in it rather than a warning
+   * light. SVG animated by CSS keyframes - no loop to stop when the tab hides.
+   */
+  .g-move {
+    animation: g-move 4.5s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  }
+  .g-scroll {
+    animation: g-scroll 4s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  }
+  .g-hold-ring {
+    /* 138 is the circumference of the r=22 ring it is drawn on. */
+    stroke-dasharray: 138;
+    stroke-dashoffset: 138;
+    animation: g-hold 4s ease-in-out infinite;
+  }
+  .g-hold-dot {
+    animation: g-hold-dot 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes g-move {
+    0% { transform: translate(0, 0); }
+    35% { transform: translate(46px, 22px); }
+    45% { transform: translate(46px, 22px); }
+    80% { transform: translate(-6px, 30px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes g-scroll {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-26px); }
+    60% { transform: translateY(-26px); }
+  }
+
+  @keyframes g-hold {
+    0% { stroke-dashoffset: 138; stroke: var(--color-accent); }
+    45% { stroke-dashoffset: 0; stroke: var(--color-accent); }
+    55% { stroke-dashoffset: 0; stroke: var(--color-good); }
+    90% { stroke-dashoffset: 0; stroke: var(--color-good); }
+    100% { stroke-dashoffset: 138; stroke: var(--color-accent); }
+  }
+
+  @keyframes g-hold-dot {
+    0%, 45% { fill: var(--color-accent); }
+    55%, 90% { fill: var(--color-good); }
+    100% { fill: var(--color-accent); }
+  }
+
+  /* One switch for all of it. A page that explains a touch gesture should still
+     explain it when the animation is refused. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+    .float, .g-move, .g-scroll, .g-hold-ring, .g-hold-dot { animation: none; }
+    .g-hold-ring { stroke-dashoffset: 0; }
   }
 }

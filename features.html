@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1018" />
+  <title>Features · PadRemote</title>
+  <meta name="description" content="Dragging without a button, gestures drawn rather than described, pairing that refuses web pages, and two devices sharing one cursor." />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+</head>
+<body>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-raised focus:px-4 focus:py-2">Skip to content</a>
+
+<header class="sticky top-0 z-40 border-b border-line/60 bg-bg/85 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-5xl items-center gap-4 px-6 py-4" aria-label="Main">
+    <a href="index.html" class="flex items-center gap-3 font-semibold tracking-tight">
+      <img src="assets/icon.svg" alt="" width="30" height="30" class="h-[30px] w-[30px] rounded-lg" />
+      <span class="hidden sm:inline">PadRemote</span>
+      <span class="sr-only">PadRemote home</span>
+    </a>
+    <div class="ml-auto flex items-center gap-0.5 text-sm text-muted sm:gap-1">
+      <a href="features.html" class="rounded-lg px-2.5 py-2 text-fg sm:px-3" aria-current="page">Features</a>
+      <a href="gestures.html" class="hidden rounded-lg px-3 py-2 transition hover:text-fg sm:inline-block">Gestures</a>
+      <a href="install.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">Install</a>
+      <a href="faq.html" class="rounded-lg px-2.5 py-2 transition hover:text-fg sm:px-3">FAQ</a>
+      <a href="https://github.com/padremote/padremote" class="rounded-lg px-2.5 py-2 font-medium text-accent transition hover:text-fg sm:px-3">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="mx-auto w-full max-w-5xl px-6">
+
+  <section class="pb-8 pt-16 sm:pt-20" data-reveal>
+    <h1 class="text-balance text-5xl font-semibold tracking-tight">Features</h1>
+    <p class="mt-4 max-w-lg text-lg text-muted">Five things it does that a web page on a phone has no business doing.</p>
+  </section>
+
+  <div class="space-y-24 pb-16 sm:space-y-32">
+
+    <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <figure class="order-last mx-auto w-full max-w-[260px] lg:order-first" data-reveal>
+        <img src="assets/img/drag.png" width="840" height="1360" loading="lazy"
+             alt="A drag in progress: a green ring and corner brackets around the fingertip, DRAGGING above it, the screen edges glowing."
+             class="w-full rounded-[2rem] border border-line shadow-xl shadow-black/40" />
+      </figure>
+      <div data-reveal data-reveal-delay="100">
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">Press and hold</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Dragging without a button</h2>
+        <p class="mt-4 text-muted">
+          Rest one finger; a ring charges around it; when it fills the button is held. Slide
+          to select, lift to release.
+        </p>
+        <p class="mt-3 text-muted">
+          The signal is drawn where your hand isn't — the screen edges bloom white — because
+          your eyes are on the other screen.
+        </p>
+      </div>
+    </article>
+
+    <article>
+      <div class="max-w-xl" data-reveal>
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">Gestures</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Shown, then named</h2>
+        <p class="mt-4 text-muted">
+          Every gesture is drawn with a fingertip for each finger it takes. Each swipe
+          direction is its own setting, and every action it can be given is listed.
+        </p>
+      </div>
+      <figure class="mt-8" data-reveal data-reveal-delay="120">
+        <img src="assets/img/gestures.png" width="2880" height="1800" loading="lazy"
+             alt="The gestures page: a list on the left, a swipe demonstrated with three animated fingertips in the middle, the actions it can take on the right."
+             class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+      </figure>
+    </article>
+
+    <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div data-reveal>
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">Settings</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">On whichever screen is nearer</h2>
+        <p class="mt-4 text-muted">
+          The same live page from the menu bar or from the pad in your hand.
+        </p>
+        <p class="mt-3 text-muted">
+          The phone's sheet is an override, not a copy: change one control and it becomes
+          yours, on that device only, until you hand it back.
+        </p>
+      </div>
+      <figure class="mx-auto w-full max-w-[260px]" data-reveal data-reveal-delay="100">
+        <img src="assets/img/phone-settings.png" width="840" height="1760" loading="lazy"
+             alt="The phone's settings sheet, with 'Matching your computer' under the controls the Mac decides."
+             class="w-full rounded-[2rem] border border-line shadow-xl shadow-black/40" />
+      </figure>
+    </article>
+
+    <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <figure class="order-last mx-auto w-full max-w-sm lg:order-first" data-reveal>
+        <img src="assets/img/connect.png" width="1320" height="1250" loading="lazy"
+             alt="The connect page on the Mac: a QR code under the heading 'Connect a device'."
+             class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+        <figcaption class="mt-3 text-center text-xs text-muted">A placeholder code — a real one is a key to that computer.</figcaption>
+      </figure>
+      <div data-reveal data-reveal-delay="100">
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">Pairing</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">The QR is a key</h2>
+        <p class="mt-4 text-muted">
+          It carries a 128-bit secret, and every connection answers an HMAC-SHA256 challenge
+          before a single touch is read — a web page in another tab included.
+        </p>
+        <p class="mt-3 text-muted">
+          Each phone then swaps the code for a key of its own, so one device can be revoked
+          without disturbing the others.
+        </p>
+      </div>
+    </article>
+
+    <article>
+      <div class="max-w-xl" data-reveal>
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">More than one device</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">A phone and a tablet, taking turns</h2>
+        <p class="mt-4 text-muted">
+          Both stay connected and share the one cursor: it goes to whoever touches next, as
+          soon as the other stops. Nothing to press, nothing to close.
+        </p>
+      </div>
+      <figure class="mt-8" data-reveal data-reveal-delay="120">
+        <img src="assets/img/devices.png" width="2400" height="1384" loading="lazy"
+             alt="Three paired devices listed — one moving the cursor now, one connected, one offline — each with a Forget button."
+             class="w-full rounded-2xl border border-line shadow-xl shadow-black/40" />
+      </figure>
+    </article>
+
+  </div>
+
+  <section class="grid gap-8 border-t border-line/60 py-16 sm:grid-cols-3">
+    <div data-reveal>
+      <h2 class="font-semibold">One process, one port</h2>
+      <p class="mt-1 text-sm text-muted">The phone's page is compiled into the app and served on the port it connects to.</p>
+    </div>
+    <div data-reveal data-reveal-delay="100">
+      <h2 class="font-semibold">Fails safe</h2>
+      <p class="mt-1 text-sm text-muted">Reconnects on its own, and losing the link always releases a held button.</p>
+    </div>
+    <div data-reveal data-reveal-delay="200">
+      <h2 class="font-semibold">Nothing phones home</h2>
+      <p class="mt-1 text-sm text-muted">No account, no telemetry. Your phone talks to your computer, and that is all.</p>
+    </div>
+  </section>
+
+  <nav class="flex flex-wrap gap-4 border-t border-line/60 py-12" aria-label="Next">
+    <a href="gestures.html" class="inline-flex min-h-11 items-center rounded-xl border border-line px-5 py-3 font-medium text-muted transition hover:border-accent hover:text-fg">Every gesture →</a>
+    <a href="install.html" class="inline-flex min-h-11 items-center rounded-xl bg-accent px-5 py-3 font-medium text-bg transition hover:brightness-110">Install it</a>
+  </nav>
+
+</main>
+
+<footer class="border-t border-line/60">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center">
+    <p>PadRemote — a wireless trackpad for your Mac. MIT licensed.</p>
+    <nav class="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto" aria-label="Footer">
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote">Source</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/README.md">Docs</a>
+      <a class="hover:text-fg" href="https://github.com/padremote/padremote/issues">Issues</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>
