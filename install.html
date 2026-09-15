@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0c1018" />
   <title>Install · PadRemote</title>
-  <meta name="description" content="Build and install PadRemote on a Mac in three steps, and what is not finished yet." />
+  <meta name="description" content="Build and install PadRemote on a Mac in three steps. macOS only; Linux and Windows are not supported yet." />
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/tailwind.css" />
 </head>
@@ -35,6 +35,10 @@
   <section class="pb-12 pt-16 sm:pt-20" data-reveal>
     <h1 class="text-balance text-5xl font-semibold tracking-tight">Install</h1>
     <p class="mt-4 text-lg text-muted">A Mac on macOS 13 or later, and a phone on the same Wi-Fi.</p>
+    <!-- The one requirement that cannot be installed, so it is said before step one rather than after the last. -->
+    <p class="mt-4 rounded-xl border border-line bg-panel px-4 py-3 text-sm text-muted">
+      <strong class="font-medium text-fg">macOS only.</strong> PadRemote is currently supported on macOS only. Linux and Windows are not supported yet.
+    </p>
   </section>
 
   <ol class="space-y-12 pb-16">
@@ -122,8 +126,8 @@ cargo run --manifest-path desktop/Cargo.toml</code></pre>
         <p class="mt-1 text-sm text-muted">The link is plain <code class="font-mono">ws://</code>: readable on your Wi-Fi, but not usable.</p>
       </div>
       <div class="rounded-2xl border border-line p-5" data-reveal data-reveal-delay="200">
-        <h3 class="font-semibold">macOS only</h3>
-        <p class="mt-1 text-sm text-muted">Windows and Linux compile and are tested, but have never run on real hardware.</p>
+        <h3 class="font-semibold">Linux and Windows</h3>
+        <p class="mt-1 text-sm text-muted">Not supported yet. PadRemote is macOS only, and does not build anywhere else.</p>
       </div>
     </div>
   </section>
@@ -137,7 +141,7 @@ cargo run --manifest-path desktop/Cargo.toml</code></pre>
 
 <footer class="border-t border-line/60">
   <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center">
-    <p>PadRemote — a wireless trackpad for your Mac. MIT licensed.</p>
+    <p>PadRemote — a wireless trackpad for your Mac. macOS only; Linux and Windows are not supported yet. MIT licensed.</p>
     <nav class="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto" aria-label="Footer">
       <a class="hover:text-fg" href="https://github.com/padremote/padremote">Source</a>
       <a class="hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/getting-started.md">Getting started</a>

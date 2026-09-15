@@ -3,6 +3,10 @@
 The site for [PadRemote](https://github.com/padremote/padremote) — a wireless
 trackpad for your Mac that runs on the phone already in your pocket.
 
+PadRemote supports **macOS only**; Linux and Windows are not supported yet. Every
+page says so in its footer, and the home, install and FAQ pages say it where a
+reader would look for it. Keep it that way until another system actually works.
+
 Published by GitHub Pages from `main` at <https://padremote.github.io>.
 
 ## Layout
