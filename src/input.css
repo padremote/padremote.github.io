@@ -87,6 +87,25 @@
   }
 
   /*
+   * The touch layer over the hero screenshot. Placed over the pad's rounded
+   * rectangle in `pad.png` (34,166 to 806,1550 of 840x1760), so the trail is
+   * clipped by the pad's own edge. Hidden until the script is there to draw.
+   */
+  .pad-touch {
+    position: absolute;
+    left: 4.05%;
+    top: 9.43%;
+    width: 91.9%;
+    height: 78.64%;
+    border-radius: 10.4% / 5.8%;
+    display: none;
+  }
+  .pad-touch.live {
+    display: block;
+    cursor: none;
+  }
+
+  /*
    * The gesture glyphs, which are the same idea as the drawings inside the app:
    * a pad with a fingertip on it for each finger the gesture takes, looping, so
    * a row of them reads like a room with people in it rather than a warning
@@ -148,5 +167,6 @@
     .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
     .float, .g-move, .g-scroll, .g-hold-ring, .g-hold-dot { animation: none; }
     .g-hold-ring { stroke-dashoffset: 0; }
+    .pad-touch.live { display: none; }
   }
 }

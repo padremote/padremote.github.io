@@ -68,9 +68,13 @@ cd padremote &amp;&amp; ./install.sh</code>
 
       <div class="relative mx-auto w-full max-w-[280px]" data-reveal data-reveal-delay="120">
         <div class="pointer-events-none absolute -inset-12 -z-10 rounded-full bg-accent/10 blur-3xl"></div>
-        <img src="assets/img/pad.png" width="840" height="1760"
-             alt="PadRemote on a phone: the whole screen is the trackpad, the computer's name and a green dot along the top."
-             class="float w-full rounded-[2rem] border border-line shadow-2xl shadow-black/60" />
+        <div class="float relative">
+          <img src="assets/img/pad.png" width="840" height="1760"
+               alt="PadRemote on a phone: the whole screen is the trackpad, the computer's name and a green dot along the top."
+               class="w-full rounded-[2rem] border border-line shadow-2xl shadow-black/60" />
+          <!-- The screenshot's pad, made touchable: the mouse becomes a fingertip. -->
+          <canvas data-pad-touch aria-hidden="true" class="pad-touch"></canvas>
+        </div>
       </div>
     </div>
   </section>
