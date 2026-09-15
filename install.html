@@ -34,24 +34,43 @@
 
   <section class="pb-12 pt-16 sm:pt-20" data-reveal>
     <h1 class="text-balance text-5xl font-semibold tracking-tight">Install</h1>
-    <p class="mt-4 text-lg text-muted">A Mac, a phone on the same Wi-Fi, and — while building it yourself is the only option — Rust and Node.</p>
+    <p class="mt-4 text-lg text-muted">A Mac on macOS 13 or later, and a phone on the same Wi-Fi.</p>
   </section>
 
   <ol class="space-y-12 pb-16">
 
     <li data-reveal>
       <p class="font-mono text-sm text-accent">01</p>
-      <h2 class="mt-2 text-2xl font-semibold tracking-tight">Build and install</h2>
-      <div class="mt-4 flex items-start gap-3 rounded-xl border border-line bg-panel px-4 py-3.5">
-        <code id="install-cmd" class="min-w-0 flex-1 overflow-x-auto whitespace-pre font-mono text-[13px] leading-relaxed">git clone https://github.com/padremote/padremote
-cd padremote &amp;&amp; ./install.sh</code>
-        <button type="button" data-copy="install-cmd"
-                class="shrink-0 rounded-lg border border-line bg-raised px-3 py-1.5 text-xs font-medium text-muted transition hover:text-fg">Copy</button>
+      <h2 class="mt-2 text-2xl font-semibold tracking-tight">Download and drag into Applications</h2>
+      <!-- The download. Always the newest release: GitHub resolves latest/download/<name>, which is why the file name carries no version. -->
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <a href="https://github.com/padremote/padremote/releases/latest/download/PadRemote.dmg"
+           class="inline-flex min-h-11 items-center rounded-xl bg-accent px-5 py-3 font-medium text-bg transition hover:brightness-110">Download PadRemote.dmg</a>
+        <a href="https://github.com/padremote/padremote/releases" class="text-sm text-muted transition hover:text-fg">All versions</a>
       </div>
       <p class="mt-3 text-muted">
-        Installs to <code class="font-mono text-fg">~/Applications</code>, offers to start it at
-        login, and launches it. It lives in the menu bar — no window, no Dock icon.
+        Open it and drag PadRemote onto Applications. Apple Silicon or Intel. It lives in the
+        menu bar — no window, no Dock icon.
       </p>
+      <p class="mt-3 text-sm text-muted">
+        It isn't notarized yet, so the first open says macOS <em>could not verify</em> it. Click
+        Done, then System Settings → Privacy &amp; Security → <strong class="font-medium text-fg">Open Anyway</strong>.
+        Once is enough. <a href="https://github.com/padremote/padremote/wiki/Install-on-macOS" class="text-accent hover:text-fg">Every step, with updating and uninstalling →</a>
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-line p-5">
+        <h3 class="font-semibold">Or build it yourself</h3>
+        <div class="mt-3 flex items-start gap-3 rounded-xl border border-line bg-panel px-4 py-3.5">
+          <code id="install-cmd" class="min-w-0 flex-1 overflow-x-auto whitespace-pre font-mono text-[13px] leading-relaxed">git clone https://github.com/padremote/padremote
+cd padremote &amp;&amp; ./install.sh</code>
+          <button type="button" data-copy="install-cmd"
+                  class="shrink-0 rounded-lg border border-line bg-raised px-3 py-1.5 text-xs font-medium text-muted transition hover:text-fg">Copy</button>
+        </div>
+        <p class="mt-3 text-sm text-muted">
+          Needs Rust and Node. Installs to <code class="font-mono text-fg">~/Applications</code>,
+          offers to start it at login, and launches it. Use one install or the other, not both.
+        </p>
+      </div>
     </li>
 
     <li data-reveal>
@@ -62,9 +81,9 @@ cd padremote &amp;&amp; ./install.sh</code>
         moves your cursor needs it, and macOS owns that decision.
       </p>
       <p class="mt-3 text-sm text-muted">
-        The grant is per app <em>and</em> per build, so a rebuild needs it again.
-        <code class="font-mono text-fg">install.sh</code> clears the stale one and prints the
-        recipe that makes grants stick.
+        The grant is per app <em>and</em> per build, so a new download or a rebuild needs it
+        again: remove PadRemote from the list with – and grant it fresh.
+        <code class="font-mono text-fg">install.sh</code> clears the stale one for you.
       </p>
     </li>
 
@@ -95,8 +114,8 @@ cargo run --manifest-path desktop/Cargo.toml</code></pre>
     <h2 class="text-2xl font-semibold tracking-tight" data-reveal>What isn't done yet</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-3">
       <div class="rounded-2xl border border-line p-5" data-reveal>
-        <h3 class="font-semibold">No signed installer</h3>
-        <p class="mt-1 text-sm text-muted">A copy built on another Mac would be blocked by Gatekeeper.</p>
+        <h3 class="font-semibold">Not notarized</h3>
+        <p class="mt-1 text-sm text-muted">The download needs one Open Anyway the first time, and Accessibility again after each update.</p>
       </div>
       <div class="rounded-2xl border border-line p-5" data-reveal data-reveal-delay="100">
         <h3 class="font-semibold">No TLS</h3>
