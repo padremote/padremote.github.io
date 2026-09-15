@@ -57,6 +57,15 @@
 
     <details class="group py-5">
       <summary class="flex cursor-pointer items-start gap-4 font-medium">
+        <span class="flex-1">macOS says “PadRemote” Not Opened.</span>
+        <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+      <p class="mt-3 text-muted">Nothing is wrong with the download: it isn't notarized yet, so macOS stops it until you allow it. Click Done, then System Settings → Privacy &amp; Security → <strong class="font-medium text-fg">Open Anyway</strong>.</p>
+      <p class="mt-3 text-muted">It asks again after every reinstall or update, because the approval belongs to the copy you allowed. If the cursor then doesn't move, remove PadRemote from the Accessibility list with – and grant it again. From a terminal, <code class="break-words font-mono text-fg">xattr -dr com.apple.quarantine /Applications/PadRemote.app</code> skips the dialog. <a class="text-accent hover:text-fg" href="https://github.com/padremote/padremote/blob/main/docs/user/troubleshooting.md#padremote-not-opened">Every case →</a></p>
+    </details>
+
+    <details class="group py-5">
+      <summary class="flex cursor-pointer items-start gap-4 font-medium">
         <span class="flex-1">The cursor doesn't move at all.</span>
         <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
       </summary>
@@ -65,10 +74,10 @@
 
     <details class="group py-5">
       <summary class="flex cursor-pointer items-start gap-4 font-medium">
-        <span class="flex-1">Why does macOS ask for Accessibility again after a rebuild?</span>
+        <span class="flex-1">Why does macOS ask for Accessibility again after a rebuild or an update?</span>
         <span class="mt-0.5 shrink-0 text-muted transition group-open:rotate-45" aria-hidden="true">+</span>
       </summary>
-      <p class="mt-3 text-muted">Ad-hoc signing ties the grant to that exact binary, so a rebuild is a different app to macOS — the box stays ticked and the app is still refused. <code class="font-mono text-fg">install.sh</code> clears it for you.</p>
+      <p class="mt-3 text-muted">Ad-hoc signing ties the grant to that exact binary, so a rebuild or a newly downloaded version is a different app to macOS — the box stays ticked and the app is still refused. Remove PadRemote from the list with – and grant it again; <code class="font-mono text-fg">install.sh</code> does that for you.</p>
     </details>
 
     <details class="group py-5">
